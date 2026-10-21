@@ -82,3 +82,11 @@ No secrets are stored in this document.
 Frontend commit 31c9e6c62f1b934914179088d5e04c8f3947da8b is pushed to codex/railway-deploy. Two explicit-SHA deployment attempts were refused with `Deploys have been paused temporarily`; the dashboard also shows `Limited Access`. The public /health remains HTTP 200 on the previous backend commit. The frontend is implemented and browser-tested locally, **not yet published**. FRONTEND_URL was saved as https://api-production-4996.up.railway.app with skip-deploys for the next release.
 
 Railway's incident https://status.railway.com/incident/JUA1PC5H says resolved, but the observed workspace still rejects deployment. No upgrade was purchased. Rejected attempts were not queued; trigger the exact frontend SHA again when the workspace accepts builds, then verify the public UI and a complete sandbox Checkout return. Do not claim the frontend is live based on the earlier backend health check.
+
+### Publication resumed — 2026-10-20, 23:54 BRT
+
+Railway accepted the release and reports SUCCESS for deployment 645373aa-d87d-4ece-b312-f97743c97ee2, exact commit 00356e9897247613842b46ac83e93991453c0a18. This supersedes the temporary publication block above. The frontend is now public at https://api-production-4996.up.railway.app; /health, / and /api/config return HTTP 200. FRONTEND_URL matches that origin.
+
+The app now shares the existing landing's wine (#6B3E3A), champagne (#F4D9C9), warm white (#F9F7F4), orange (#FF6B35), typography and rounded buttons. Functional flows and original cards are preserved. Desktop/mobile visual checks passed; public signup, day-one cards, saved completion and Premium Checkout opening were verified in the browser. Stripe remains sandbox-only.
+
+Full public browser flow verified after release: synthetic signup → card completion → Premium Checkout → fictitious Stripe test-card payment → return to the app with “Pagamento de teste confirmado” → 90 available cards and saved completion. No real payment was made. This supersedes the earlier local-only frontend verification.
