@@ -37,3 +37,29 @@ npm audit --omit=dev
 The automated suite starts an isolated local PostgreSQL server, uses synthetic users and signed test webhook fixtures, and stubs Checkout creation. It does not by itself prove delivery from Stripe or a real checkout.
 
 Do not commit .env files or node_modules. Existing history is preserved; never reuse the formerly committed JWT secret. Docker contains only production dependencies, src, and the card JSON.
+
+## Verified deployment — 2026-10-20 (BRT)
+
+- API: https://api-production-4996.up.railway.app
+- Health: https://api-production-4996.up.railway.app/health — HTTP 200 with PostgreSQL check.
+- Railway project: Back to Me, 30b8889d-2d57-4cb0-b00e-932425d116d0; API service 10604879-b0b9-4c7e-a17e-bad058c8aa10; environment production. The environment name does not mean Stripe live mode.
+- Deployed application commit: 77cce3aa5001be8e04aca084a10efa18bc3a78c6; successful deployment 86cf19ec-9541-4a22-a7f5-6b1d31899bd9.
+- Docker build succeeded on Railway using Node 24. PostgreSQL 18 is private and online with a persistent volume.
+- All seven listed application variables are configured. The eighth URL value is Railway's generated RAILWAY_PUBLIC_DOMAIN.
+- Signup 201, login 200, free history 30 cards; actual Stripe sandbox checkout completed/paid and its webhook upgraded the same test user to Premium with 90 cards. No live payment was made.
+- Stripe sandbox: acct_1UKzzR1BrJdh1NNG. Restricted key: Checkout Sessions read/write only. Webhook we_1USnhP1BrJdh1NNGdahG7k4n, enabled for the three events listed above. Event evt_1USnnX1BrJdh1NNGLN9peany had zero pending deliveries.
+- Railway's new services no longer consume railway.json. Healthcheck /health, timeout 120, restart ON_FAILURE/3 and Dockerfile path were configured directly and verified in the running deployment manifest. The file remains as a legacy reference, not the source of the deployed settings.
+
+### Remaining integration work
+
+The FRONTEND_URL currently retains the repository's intended origin, which does not resolve. Supply the real frontend URL before customer use. Stripe is sandbox-only; live activation requires a separate matching key and webhook. Railway is on its trial; no paid plan was purchased.
+
+GitHub source is connected as a public repository, but automatic deploy triggers cannot be created until the Railway GitHub integration has access to this repository. PR #1 contains the deployment fixes and remains open. The default master branch still has the old code: do not use --from-source until it contains the verified changes.
+
+To redeploy the verified version explicitly (from this linked checkout):
+
+```sh
+npx @railway/cli redeploy --service api --commit 77cce3aa5001be8e04aca084a10efa18bc3a78c6 --yes
+```
+
+No secrets are stored in this document.
