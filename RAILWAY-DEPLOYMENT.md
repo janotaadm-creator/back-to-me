@@ -65,7 +65,7 @@ Set these in Railway dashboard → Variables:
 
 ```bash
 # Required
-DATABASE_URL=postgresql://user:pass@db.railway.internal:5432/railway
+DATABASE_URL=<URL privada fornecida pelo PostgreSQL do Railway>
 JWT_SECRET=<use: openssl rand -base64 32>
 NODE_ENV=production
 PORT=3001
@@ -229,3 +229,9 @@ railway logs -f
 **Backend**: Express + PostgreSQL + Stripe  
 **Deployed**: Railway  
 **Status**: Production-ready ✅
+
+## Landing e entrada do app (21/10/2026)
+
+A raiz `/` apresenta a landing romântica escolhida por Guilherme: coração, rosa e vinho, título “Abra espaço para você, de novo”. Referência visual e foto: `landing-v6-claude` do projeto original. O texto apresenta o app atual, sem reaproveitar a oferta antiga de nove aulas/kit.
+
+`/app?mode=signup` abre cadastro; `/app?mode=login` abre login. `/success` e `/cancel` continuam servindo a interface do app; a confirmação assinada do Stripe continua sendo necessária. Após confirmação, a URL passa a `/app`. Pagamentos permanecem em sandbox.

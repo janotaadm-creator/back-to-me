@@ -64,7 +64,7 @@ app.use('/api/stripe', stripeRoutes);
 const publicDir = path.join(__dirname, '../public');
 app.use(express.static(publicDir, { index: 'index.html', maxAge: 0 }));
 // Returning from Checkout does not itself confirm payment. The app checks the signed webhook result.
-app.get(['/success', '/cancel'], (req, res) => res.sendFile(path.join(publicDir, 'index.html')));
+app.get(['/app', '/success', '/cancel'], (req, res) => res.sendFile(path.join(publicDir, 'app.html')));
 
 // Start server
 async function startServer() {
