@@ -10,6 +10,14 @@ const TIER_PRICES = {
   Pro: Number(process.env.PRICE_PRO || 2999),
   Premium: Number(process.env.PRICE_PREMIUM || 4999),
 };
+router.get('/status', authenticateToken, async (req, res) => {
+  if (typeof req.query.session_id !== 'string' || req.query.session_id.length > 255) return res.status(400).json({ error: 'Session required' });
+  try {
+    const { rows } = await pool.query('SELECT status,tier,expires_at FROM subscriptions WHERE user_id=$1 AND stripe_session_id=$2', [req.user.id, req.query.session_id]);
+    if (!rows[0]) return res.status(404).json({ error: 'Purchase not found' });
+    res.set('Cache-Control', 'no-store').json(rows[0]);
+  } catch { res.status(500).json({ error: 'Unable to check purchase' }); }
+});
 function publicUrl() {
   const base = process.env.APP_URL || (process.env.RAILWAY_PUBLIC_DOMAIN && `https://${process.env.RAILWAY_PUBLIC_DOMAIN}`);
   if (!base && process.env.NODE_ENV === 'production') throw new Error('Public app URL is not configured');
@@ -115,3 +123,4 @@ async function webhookHandler(req, res) {
 module.exports = router;
 module.exports.webhookHandler = webhookHandler;
 module.exports.stripe = stripe;
+module.exports.prices = TIER_PRICES;

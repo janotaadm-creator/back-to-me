@@ -14,7 +14,7 @@ Create a Railway PostgreSQL service and an API service from this repository. Bui
 - STRIPE_WEBHOOK_SECRET: signing secret for this exact endpoint and Stripe mode
 - FRONTEND_URL: actual frontend origin
 
-Railway's generated RAILWAY_PUBLIC_DOMAIN supplies the API return URL. Outside Railway, set APP_URL explicitly. The previously documented back-to-me-landing.pages.dev did not resolve during inspection; frontend publication is not established.
+Railway's generated RAILWAY_PUBLIC_DOMAIN supplies the API return URL. Outside Railway, set APP_URL explicitly. The frontend now ships in public/ and uses the same origin as the API. Set FRONTEND_URL to the generated Railway HTTPS origin. The previously documented back-to-me-landing.pages.dev did not resolve.
 
 Tables and all 90 cards are initialized on startup, before listening. Seeding is repeatable and repairs a partial seed. /health queries PostgreSQL and returns 503 if it is unavailable.
 
@@ -36,7 +36,7 @@ npm audit --omit=dev
 
 The automated suite starts an isolated local PostgreSQL server, uses synthetic users and signed test webhook fixtures, and stubs Checkout creation. It does not by itself prove delivery from Stripe or a real checkout.
 
-Do not commit .env files or node_modules. Existing history is preserved; never reuse the formerly committed JWT secret. Docker contains only production dependencies, src, and the card JSON.
+Do not commit .env files or node_modules. Existing history is preserved; never reuse the formerly committed JWT secret. Docker contains production dependencies, src, public, and the card JSON.
 
 ## Verified deployment — 2026-10-20 (BRT)
 
@@ -52,7 +52,7 @@ Do not commit .env files or node_modules. Existing history is preserved; never r
 
 ### Remaining integration work
 
-The FRONTEND_URL currently retains the repository's intended origin, which does not resolve. Supply the real frontend URL before customer use. Stripe is sandbox-only; live activation requires a separate matching key and webhook. Railway is on its trial; no paid plan was purchased.
+The frontend provides signup/login, personal daily cards, saved completion, a 30-day journey and Checkout return handling on the API origin. Stripe is sandbox-only; live activation requires a separate matching key and webhook. Railway is on its trial; no paid plan was purchased.
 
 GitHub source is connected as a public repository, but automatic deploy triggers cannot be created until the Railway GitHub integration has access to this repository. PR #1 contains the deployment fixes and remains open. The default master branch still has the old code: do not use --from-source until it contains the verified changes.
 
@@ -63,3 +63,16 @@ npx @railway/cli redeploy --service api --commit 77cce3aa5001be8e04aca084a10efa1
 ```
 
 No secrets are stored in this document.
+
+
+## Basic web interface
+
+- GET / serves the Portuguese responsive application, with local CSS/JS and a restrictive CSP. No external scripts or fonts.
+- Authentication uses /auth/signup, /auth/login and /auth/me. Tokens stay in sessionStorage for the current browser tab; returning from Stripe preserves the session. No password-reset or email-verification feature is implemented.
+- Daily content starts from each account's creation time (24-hour intervals), not the historical seed dates. The complete entitled library is also browsable.
+- Completion checks card entitlement and serializes duplicate writes. The UI computes completed cards and complete days from the entitled history; it does not claim a streak.
+- Basic: days 1–10 (30 cards). Pro: days 1–20 (60). Premium: days 1–30 (90). Paid access lasts 30 days from payment.
+- Checkout return checks /api/stripe/status for a session owned by the logged-in user. Only the signed webhook activates access; a return URL alone cannot do so.
+- Test mode is shown explicitly. There is no live charge or recurring subscription.
+- 14 automated tests pass against isolated PostgreSQL, including expired access, owner-bound payment status, personal day selection, concurrent completion, input validation and static/CSP returns.
+- The VPS landing at /root/.openclaw/workspace-icaro/back-to-me-deploy/public/index.html was inspected and preserved. It contains generic App Premium offers, unverified metrics/testimonials and incompatible checkout/trial wiring; it was not published as the app.

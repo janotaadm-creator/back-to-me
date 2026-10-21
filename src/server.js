@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 
 const { initDatabase } = require('./db');
@@ -29,6 +30,19 @@ app.post('/api/stripe/webhook', express.raw({ type: 'application/json' }), strip
 // Then apply JSON parser for everything else
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.disable('x-powered-by');
+app.use((req, res, next) => {
+  res.set('X-Content-Type-Options', 'nosniff');
+  res.set('Referrer-Policy', 'same-origin');
+  res.set('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'");
+  if (req.headers.authorization) res.set('Cache-Control', 'no-store');
+  next();
+});
+app.get('/api/config', (req, res) => res.json({
+  testMode: !/^(sk|rk)_live_/.test(process.env.STRIPE_SECRET_KEY || ''),
+  prices: stripeRoutes.prices,
+  currency: 'USD',
+}));
 
 // Health check
 app.get('/health', async (req, res) => {
@@ -47,13 +61,10 @@ app.use('/api/actions', actionsRoutes);
 app.use('/api/community', communityRoutes);
 app.use('/api/stripe', stripeRoutes);
 
-// Payment status is confirmed only by the signed webhook.
-function paymentPage(title, message) {
-  const href = frontendUrl.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  return `<html><body style="font-family:sans-serif;text-align:center;margin-top:100px"><h1>${title}</h1><p>${message}</p><a href="${href}">Back to app</a></body></html>`;
-}
-app.get('/success', (req, res) => res.send(paymentPage('Thank you', 'Your payment is being confirmed. Return to the app to check your access.')));
-app.get('/cancel', (req, res) => res.send(paymentPage('Payment cancelled', 'You can return to the app and try again.')));
+const publicDir = path.join(__dirname, '../public');
+app.use(express.static(publicDir, { index: 'index.html', maxAge: 0 }));
+// Returning from Checkout does not itself confirm payment. The app checks the signed webhook result.
+app.get(['/success', '/cancel'], (req, res) => res.sendFile(path.join(publicDir, 'index.html')));
 
 // Start server
 async function startServer() {

@@ -2,16 +2,19 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { pool } = require('../db');
+const { authenticateToken } = require('../middleware/auth');
+const { getAccessTier } = require('../access');
 
 const router = express.Router();
 
 // POST /auth/signup
 router.post('/signup', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { password } = req.body;
+    const email = typeof req.body.email === 'string' ? req.body.email.trim().toLowerCase() : '';
 
-    if (!email || !password) {
-      return res.status(400).json({ error: 'Email and password required' });
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254 || typeof password !== 'string' || password.length < 8 || Buffer.byteLength(password) > 72) {
+      return res.status(400).json({ error: 'Use a valid email and a password between 8 and 72 bytes' });
     }
 
     // Hash password
@@ -48,9 +51,10 @@ router.post('/signup', async (req, res) => {
 // POST /auth/login
 router.post('/login', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { password } = req.body;
+    const email = typeof req.body.email === 'string' ? req.body.email.trim().toLowerCase() : '';
 
-    if (!email || !password) {
+    if (!email || typeof password !== 'string' || !password || Buffer.byteLength(password) > 72) {
       return res.status(400).json({ error: 'Email and password required' });
     }
 
@@ -83,6 +87,14 @@ router.post('/login', async (req, res) => {
     console.error('[AUTH] Login error:', err);
     res.status(500).json({ error: 'Internal server error' });
   }
+});
+
+router.get('/me', authenticateToken, async (req, res) => {
+  try {
+    const { rows } = await pool.query('SELECT id,email,created_at FROM users WHERE id=$1', [req.user.id]);
+    if (!rows[0]) return res.status(401).json({ error: 'User not found' });
+    res.set('Cache-Control', 'no-store').json({ user: { ...rows[0], tier: await getAccessTier(req.user.id) } });
+  } catch { res.status(500).json({ error: 'Unable to load account' }); }
 });
 
 module.exports = router;
