@@ -76,3 +76,9 @@ No secrets are stored in this document.
 - Test mode is shown explicitly. There is no live charge or recurring subscription.
 - 14 automated tests pass against isolated PostgreSQL, including expired access, owner-bound payment status, personal day selection, concurrent completion, input validation and static/CSP returns.
 - The VPS landing at /root/.openclaw/workspace-icaro/back-to-me-deploy/public/index.html was inspected and preserved. It contains generic App Premium offers, unverified metrics/testimonials and incompatible checkout/trial wiring; it was not published as the app.
+
+### Frontend publication blocked — 2026-10-20, 23:38 BRT
+
+Frontend commit 31c9e6c62f1b934914179088d5e04c8f3947da8b is pushed to codex/railway-deploy. Two explicit-SHA deployment attempts were refused with `Deploys have been paused temporarily`; the dashboard also shows `Limited Access`. The public /health remains HTTP 200 on the previous backend commit. The frontend is implemented and browser-tested locally, **not yet published**. FRONTEND_URL was saved as https://api-production-4996.up.railway.app with skip-deploys for the next release.
+
+Railway's incident https://status.railway.com/incident/JUA1PC5H says resolved, but the observed workspace still rejects deployment. No upgrade was purchased. Rejected attempts were not queued; trigger the exact frontend SHA again when the workspace accepts builds, then verify the public UI and a complete sandbox Checkout return. Do not claim the frontend is live based on the earlier backend health check.
