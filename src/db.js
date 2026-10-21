@@ -12,8 +12,8 @@ pool.on('error', (err) => {
 
 // Função para rodar migrations na startup
 async function initDatabase() {
+  const client = await pool.connect();
   try {
-    const client = await pool.connect();
     
     // Users table
     await client.query(`
@@ -73,12 +73,21 @@ async function initDatabase() {
       );
     `);
 
-    client.release();
+    await client.query(`ALTER TABLE subscriptions ADD COLUMN IF NOT EXISTS recurring BOOLEAN DEFAULT FALSE;
+      ALTER TABLE subscriptions ADD COLUMN IF NOT EXISTS billing_status TEXT;
+      ALTER TABLE subscriptions ADD COLUMN IF NOT EXISTS cancel_at_period_end BOOLEAN DEFAULT FALSE;
+      CREATE UNIQUE INDEX IF NOT EXISTS subscriptions_recurring_unique ON subscriptions(stripe_subscription_id) WHERE recurring = TRUE;
+      CREATE TABLE IF NOT EXISTS experience_state (user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+        goal TEXT, completed TEXT[] DEFAULT '{}', reminder BOOLEAN DEFAULT FALSE, updated_at TIMESTAMPTZ DEFAULT NOW());
+      CREATE TABLE IF NOT EXISTS journal_entries (id SERIAL PRIMARY KEY, user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+        title VARCHAR(120) NOT NULL, content TEXT NOT NULL, created_at TIMESTAMPTZ DEFAULT NOW());
+      CREATE TABLE IF NOT EXISTS product_events (id BIGSERIAL PRIMARY KEY, user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+        event TEXT NOT NULL, created_at TIMESTAMPTZ DEFAULT NOW());`);
     console.log('[DB] Tables initialized successfully');
   } catch (err) {
     console.error('[DB] Error initializing database:', err);
     throw err;
-  }
+  } finally { client.release(); }
 }
 
 module.exports = { pool, initDatabase };

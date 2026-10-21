@@ -4,6 +4,8 @@ const { authenticateToken } = require('../middleware/auth');
 
 const { getAccessTier, canAccessCard } = require('../access');
 const router = express.Router();
+const revised = require('../content/revised-cards.json');
+const revise = card => ({...card,...revised[String(card.card_id)]});
 
 // GET /api/cards/today - retorna 3 cards de hoje baseado no tier
 router.get('/today', authenticateToken, async (req, res) => {
@@ -38,7 +40,7 @@ router.get('/today', authenticateToken, async (req, res) => {
       tier: userTier,
       dayNumber,
       programEnded: elapsedDays >= 30,
-      cards: accessibleCards,
+      cards: accessibleCards.map(revise),
     });
   } catch (err) {
     console.error('[CARDS] Error fetching today cards:', err);
@@ -62,7 +64,7 @@ router.get('/history', authenticateToken, async (req, res) => {
 
     const userTier = await getAccessTier(userId);
     const cards = cardsResult.rows.filter(card => canAccessCard(userTier, card.tier));
-    res.json({ total: cards.length, cards });
+    res.json({ total: cards.length, cards: cards.map(revise) });
   } catch (err) {
     console.error('[CARDS] Error fetching history:', err);
     res.status(500).json({ error: 'Internal server error' });

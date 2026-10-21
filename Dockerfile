@@ -13,6 +13,7 @@ RUN npm ci --omit=dev
 # Copy source code
 COPY src ./src
 COPY public ./public
+COPY media ./media
 COPY back-to-me-30dias.json ./back-to-me-30dias.json
 
 # Expose port

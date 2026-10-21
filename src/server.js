@@ -34,7 +34,7 @@ app.disable('x-powered-by');
 app.use((req, res, next) => {
   res.set('X-Content-Type-Options', 'nosniff');
   res.set('Referrer-Policy', 'same-origin');
-  res.set('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'");
+  res.set('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; media-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'");
   if (req.headers.authorization) res.set('Cache-Control', 'no-store');
   next();
 });
@@ -42,6 +42,8 @@ app.get('/api/config', (req, res) => res.json({
   testMode: !/^(sk|rk)_live_/.test(process.env.STRIPE_SECRET_KEY || ''),
   prices: stripeRoutes.prices,
   currency: 'USD',
+  plans: require('./plans').plans,
+  billing: 'monthly',
 }));
 
 // Health check
@@ -60,6 +62,7 @@ app.use('/api/cards', cardsRoutes);
 app.use('/api/actions', actionsRoutes);
 app.use('/api/community', communityRoutes);
 app.use('/api/stripe', stripeRoutes);
+app.use('/api/experience', require('./routes/experience'));
 
 const publicDir = path.join(__dirname, '../public');
 app.use(express.static(publicDir, { index: 'index.html', maxAge: 0 }));

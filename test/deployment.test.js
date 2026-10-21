@@ -59,10 +59,15 @@ test('checkout uses public returns and binds the purchase to the user', async ()
     assert.equal(input.success_url, 'https://api.example.com/success?session_id={CHECKOUT_SESSION_ID}');
     assert.equal(input.cancel_url, 'https://api.example.com/cancel');
     assert.equal(input.metadata.userId, String(userId));
+    assert.equal(input.mode, 'subscription');
+    assert.equal(input.line_items[0].price_data.unit_amount, 1900);
+    assert.equal(input.line_items[0].price_data.recurring.interval, 'month');
+    assert.equal(input.subscription_data.metadata.tier, 'MeuEspaco');
     assert.equal(input.payment_method_types, undefined);
     return { id: 'cs_test_checkout', url: 'https://checkout.stripe.com/test' };
   };
-  try { await request(app).post('/api/stripe/checkout').set('Authorization', `Bearer ${token}`).send({ tier: 'Pro' }).expect(200); }
+  try { await request(app).post('/api/stripe/checkout').set('Authorization', `Bearer ${token}`).send({ tier: 'MeuEspaco' }).expect(200);
+    await pool.query("UPDATE subscriptions SET tier='Pro' WHERE stripe_session_id='cs_test_checkout'"); }
   finally { stripe.checkout.sessions.create = original; }
 });
 test('invalid signature is rejected', async () => {
@@ -152,5 +157,85 @@ test('completion rejects inaccessible cards and serializes retries without dupli
 test('signup validates inputs and public configuration contains only prices and mode', async () => {
   for (const body of [{email:'invalid',password:testPassword},{email:'bad@example.com',password:'short'},{email:'bad@example.com',password:{}}]) await request(app).post('/auth/signup').send(body).expect(400);
   const result = await request(app).get('/api/config').expect(200);
-  assert.deepEqual(result.body,{testMode:true,prices:{Pro:2999,Premium:4999},currency:'USD'});
+  assert.equal(result.body.testMode,true); assert.equal(result.body.billing,'monthly');
+  assert.deepEqual(result.body.prices,{Essencial:900,MeuEspaco:1900,Aprofundar:2900});
+  assert.equal(result.body.plans.filter(p=>p.recommended).length,1);
+  assert.equal(result.body.plans.find(p=>p.recommended).id,'MeuEspaco');
+  assert.equal(result.body.currency,'USD');
+});
+
+test('experience gates content, validates progress and keeps audio private', async () => {
+  await request(app).get('/api/experience').expect(401);
+  const free=await request(app).get('/api/experience').set('Authorization',`Bearer ${token}`).expect(200);
+  assert.equal(free.body.level,0); assert.equal(free.body.exercises.filter(e=>!e.locked).length,3);
+  assert.ok(free.body.exercises.filter(e=>e.locked).every(e=>!e.questions&&!e.example));
+  await request(app).get('/api/experience/audio/pedido').set('Authorization',`Bearer ${token}`).expect(403);
+  await request(app).get('/api/experience/audio/cena').expect(401);
+  await request(app).get('/api/experience/sample/audio').expect(200).expect('Content-Type',/audio/);
+  await request(app).post('/api/experience/state').set('Authorization',`Bearer ${token}`).send({complete:'pedido'}).expect(403);
+  await request(app).post('/api/experience/state').set('Authorization',`Bearer ${token}`).send({goal:'diagnosis'}).expect(400);
+  for(let i=0;i<2;i++)await request(app).post('/api/experience/state').set('Authorization',`Bearer ${token}`).send({goal:'entender',complete:'cena'}).expect(200);
+  const state=(await request(app).get('/api/experience').set('Authorization',`Bearer ${token}`)).body.state;
+  assert.deepEqual(state.completed,['cena']);assert.equal(state.goal,'entender');
+  await request(app).post('/api/experience/event').set('Authorization',`Bearer ${token}`).send({event:'exercise_completed',answer:'private'}).expect(400);
+});
+
+test('recurring payment, renewal, stale event, payment failure and cancellation use current Stripe state', async () => {
+  const oldRetrieve=stripe.subscriptions.retrieve, oldUpdate=stripe.subscriptions.update;
+  const now=Math.floor(Date.now()/1000), end=now+30*86400;
+  const sub={id:'sub_test_monthly',object:'subscription',metadata:{app:'back-to-me',userId:String(userId),tier:'MeuEspaco'},status:'active',cancel_at_period_end:false,
+    items:{data:[{quantity:1,price:{unit_amount:1900,currency:'usd',recurring:{interval:'month',interval_count:1}}}]},latest_invoice:{status:'open',lines:{data:[{period:{start:now,end}}]}}};
+  stripe.subscriptions.retrieve=async id=>{assert.equal(id,sub.id);return structuredClone(sub);};
+  stripe.subscriptions.update=async(id,data)=>{assert.equal(id,sub.id);sub.cancel_at_period_end=data.cancel_at_period_end;return sub;};
+  const sync=()=>webhook('invoice.paid',{object:'invoice',parent:{subscription_details:{subscription:sub.id}}});
+  const row=async()=>(await pool.query('SELECT * FROM subscriptions WHERE stripe_subscription_id=$1',[sub.id])).rows[0];
+  try {
+    await sync().expect(200); assert.equal((await row()).status,'pending');
+    sub.latest_invoice.status='paid';
+    const results=await Promise.all([sync(),sync()]);assert.deepEqual(results.map(r=>r.status),[200,200]);
+    assert.equal((await row()).expires_at.getTime(),end*1000);
+    assert.equal((await pool.query('SELECT COUNT(*)::int n FROM subscriptions WHERE stripe_subscription_id=$1',[sub.id])).rows[0].n,1);
+    await webhook('checkout.session.completed',{object:'checkout.session',id:'cs_test_monthly',mode:'subscription',subscription:sub.id,metadata:sub.metadata}).expect(200);
+    await request(app).get('/api/stripe/status?session_id=cs_test_monthly').set('Authorization',`Bearer ${token}`).expect(200);
+    await request(app).post('/api/stripe/checkout').set('Authorization',`Bearer ${token}`).send({tier:'Essencial'}).expect(409);
+    sub.latest_invoice.lines.data[0].period.end=end+30*86400;await sync().expect(200);
+    assert.equal((await row()).expires_at.getTime(),(end+30*86400)*1000);
+    sub.status='past_due';sub.latest_invoice.status='open';sub.latest_invoice.lines.data[0].period.end=end+60*86400;
+    await webhook('invoice.payment_failed',{object:'invoice',subscription:sub.id}).expect(200);
+    assert.equal((await row()).expires_at.getTime(),(end+30*86400)*1000);
+    sub.status='active';sub.latest_invoice.status='paid';sub.latest_invoice.lines.data[0].period.end=end+30*86400;
+    const other=(await request(app).post('/auth/login').send({email:'other@example.com',password:testPassword})).body.token;
+    await request(app).post('/api/stripe/subscription/cancel').set('Authorization',`Bearer ${other}`).send({id:(await row()).id}).expect(404);
+    await request(app).post('/api/stripe/subscription/cancel').set('Authorization',`Bearer ${token}`).send({id:(await row()).id}).expect(200);
+    assert.equal((await row()).cancel_at_period_end,true);assert.equal((await row()).status,'active');
+    sub.status='canceled';await webhook('customer.subscription.deleted',{id:sub.id}).expect(200);
+    await webhook('customer.subscription.updated',{id:sub.id,status:'active'}).expect(200);
+    assert.ok((await row()).expires_at<=new Date());
+    assert.equal((await request(app).get('/auth/me').set('Authorization',`Bearer ${token}`)).body.user.tier,'Basico');
+    sub.items.data[0].price.unit_amount=1; await sync().expect(500);
+  } finally {stripe.subscriptions.retrieve=oldRetrieve;stripe.subscriptions.update=oldUpdate;}
+});
+
+test('journal encrypts text, isolates owners and permits reading after expiry; workshops release progressively',async()=>{
+ const auth=()=>({Authorization:`Bearer ${token}`});
+ await request(app).post('/api/experience/journal').set(auth()).send({title:'Título',content:'Minhas palavras'}).expect(403);
+ const paid=(await pool.query("INSERT INTO subscriptions(user_id,tier,status,expires_at) VALUES($1,'MeuEspaco','active',NOW()+INTERVAL '1 day') RETURNING id",[userId])).rows[0].id;
+ const note=(await request(app).post('/api/experience/journal').set(auth()).send({title:'Título de teste',content:'Reflexão fictícia privada <script>alert(1)</script>'}).expect(201)).body;
+ const stored=(await pool.query('SELECT title,content FROM journal_entries WHERE id=$1',[note.id])).rows[0];
+ assert.equal(stored.title,'Reflexão');assert.ok(!stored.content.includes('fictícia'));
+ const other=(await request(app).post('/auth/login').send({email:'other@example.com',password:testPassword})).body.token;
+ assert.equal((await request(app).get('/api/experience/journal').set('Authorization',`Bearer ${other}`)).body.entries.length,0);
+ await request(app).delete('/api/experience/journal/'+note.id).set('Authorization',`Bearer ${other}`).expect(404);
+ await request(app).get('/api/experience/audio/pedido').set(auth()).expect(200);
+ await request(app).get('/api/experience/audio/oficina-1').set(auth()).expect(403);
+ await pool.query("UPDATE subscriptions SET tier='Aprofundar' WHERE id=$1",[paid]);
+ let exp=(await request(app).get('/api/experience').set(auth()).expect(200)).body;
+ assert.equal(exp.workshops.filter(w=>!w.locked).length,1);
+ await request(app).get('/api/experience/audio/oficina-2').set(auth()).expect(403);
+ await pool.query("UPDATE users SET created_at=NOW()-INTERVAL '61 days' WHERE id=$1",[userId]);
+ exp=(await request(app).get('/api/experience').set(auth())).body;assert.equal(exp.workshops.filter(w=>!w.locked).length,3);
+ await pool.query("UPDATE subscriptions SET expires_at=NOW()-INTERVAL '1 day' WHERE id=$1",[paid]);
+ const notes=(await request(app).get('/api/experience/journal').set(auth()).expect(200)).body.entries;
+ assert.equal(notes[0].title,'Título de teste');assert.ok(notes[0].content.includes('fictícia'));
+ await request(app).delete('/api/experience/journal/'+note.id).set(auth()).expect(200);
 });

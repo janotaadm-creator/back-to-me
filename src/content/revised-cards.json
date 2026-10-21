@@ -1,0 +1,452 @@
+{
+  "1": {
+    "motivacao": "O que você sente merece espaço, mesmo quando faltam palavras.",
+    "reflexao": "Em uma situação recente, do que você sentiu falta?",
+    "acao": "Complete para si: “Aconteceu ___. Eu precisava de ___.” Não é preciso compartilhar."
+  },
+  "2": {
+    "motivacao": "Você pode começar por uma frase, sem explicar tudo.",
+    "reflexao": "Existe algo que gostaria de organizar para si hoje?",
+    "acao": "Escreva uma frase que represente seu momento. Se preferir, escolha apenas uma palavra."
+  },
+  "3": {
+    "motivacao": "Você pode descobrir o que gostaria de pedir antes de fazer um pedido.",
+    "reflexao": "Qual necessidade está difícil de explicar?",
+    "acao": "Complete “Eu gostaria de…”. Guarde ou adapte a frase, sem obrigação de enviá-la."
+  },
+  "4": {
+    "motivacao": "Ter espaço para si pode começar com uma escolha pequena.",
+    "reflexao": "Que interesse seu gostaria de retomar?",
+    "acao": "Anote uma atividade de que gosta e uma versão possível dela nesta semana."
+  },
+  "5": {
+    "motivacao": "Ouvir a si mesma é uma forma de dar atenção ao que importa para você.",
+    "reflexao": "Que preferência sua gostaria de reconhecer hoje?",
+    "acao": "Complete “Eu gosto de ___” e “Eu gostaria de ter mais espaço para ___”. Uma resposta basta."
+  },
+  "6": {
+    "motivacao": "Hesitar também pode ser uma oportunidade de pensar.",
+    "reflexao": "Há alguma escolha pequena sobre a qual gostaria de ter mais clareza?",
+    "acao": "Liste uma opção que quer, uma que não quer e algo que ainda precisa saber. Você pode decidir depois."
+  },
+  "7": {
+    "motivacao": "Você pode conhecer seu jeito de se expressar sem julgá-lo.",
+    "reflexao": "Em que contexto costuma se sentir mais à vontade para falar?",
+    "acao": "Descreva uma situação confortável ou as condições que gostaria de encontrar: tempo, atenção, companhia ou outra."
+  },
+  "8": {
+    "motivacao": "Ficar em silêncio pode ter muitos motivos.",
+    "reflexao": "O que pesou na decisão de não falar em uma situação recente?",
+    "acao": "Anote um motivo possível, sem se acusar. Acrescente o que teria ajudado naquele momento."
+  },
+  "9": {
+    "motivacao": "Sua preferência pode existir mesmo antes de ser compartilhada.",
+    "reflexao": "Que assunto leve você gostaria de comentar se tivesse vontade?",
+    "acao": "Escreva uma opinião sobre música, comida ou um livro. Compartilhar fica a seu critério."
+  },
+  "10": {
+    "motivacao": "Você pode se inspirar em alguém sem copiar seu jeito.",
+    "reflexao": "Que qualidade de comunicação admira em uma pessoa?",
+    "acao": "Escolha uma qualidade concreta, como escutar até o fim. Anote como ela combinaria com seu próprio jeito."
+  },
+  "11": {
+    "motivacao": "Entender um hábito não exige explicar sua origem agora.",
+    "reflexao": "Em que situação é mais fácil expressar uma preferência?",
+    "acao": "Anote o que facilita: conhecer o assunto, ter tempo ou estar com alguém de confiança, por exemplo."
+  },
+  "12": {
+    "motivacao": "Uma conversa envolve escolhas e respostas de mais de uma pessoa.",
+    "reflexao": "O que você pode escolher numa conversa e o que depende também do outro?",
+    "acao": "Faça duas linhas com essas diferenças. Não é preciso iniciar uma conversa para concluir o exercício."
+  },
+  "13": {
+    "motivacao": "Você pode reconhecer uma vontade que ficou para depois sem se culpar.",
+    "reflexao": "Há algo que ainda gostaria de experimentar?",
+    "acao": "Anote uma vontade e um passo pequeno que dependeria de você. Se não fizer mais sentido, pode deixá-la para trás."
+  },
+  "14": {
+    "motivacao": "Sua opinião pode ter espaço no seu próprio caderno.",
+    "reflexao": "Que preferência simples gostaria de registrar hoje?",
+    "acao": "Escolha entre dois programas que apreciaria e escreva por que um combina mais com seu momento."
+  },
+  "15": {
+    "motivacao": "Você pode olhar para o que escreveu sem precisar provar evolução.",
+    "reflexao": "Alguma anotação anterior ainda representa o que sente?",
+    "acao": "Releia uma resposta, se houver. Marque “continua”, “mudou” ou “ainda não sei” e acrescente uma linha."
+  },
+  "16": {
+    "motivacao": "Você tem direito a interesses que sejam seus.",
+    "reflexao": "Sobre o que gosta de conversar ou aprender?",
+    "acao": "Liste um assunto de interesse e uma forma simples de explorá-lo por conta própria."
+  },
+  "17": {
+    "motivacao": "Seu caminho não precisa aparecer aos olhos de outra pessoa.",
+    "reflexao": "Algum exercício foi útil? Algum não combinou com você?",
+    "acao": "Anote uma coisa que gostaria de manter e uma que prefere adaptar ou pular."
+  },
+  "18": {
+    "motivacao": "Um dia sem exercício não apaga o que já foi importante.",
+    "reflexao": "O que cabe na sua energia de hoje?",
+    "acao": "Escolha ler um card, escrever uma palavra ou pausar. Qualquer uma dessas escolhas pode encerrar seu momento de hoje."
+  },
+  "19": {
+    "motivacao": "Você decide o que quer guardar e o que quer compartilhar.",
+    "reflexao": "Existe algo seu que gostaria que uma pessoa soubesse?",
+    "acao": "Escreva essa ideia apenas para você. Depois escolha entre guardar, revisar ou compartilhar em contexto seguro."
+  },
+  "20": {
+    "motivacao": "Pode haver espaço para uma escolha que seja só sua.",
+    "reflexao": "Qual pequena decisão está sob sua responsabilidade hoje?",
+    "acao": "Escolha algo pessoal e reversível, como uma música ou uma pausa possível. Decisões compartilhadas podem precisar de conversa."
+  },
+  "21": {
+    "motivacao": "Uma revisão pode ajudar a escolher o próximo passo.",
+    "reflexao": "O que vale levar desta primeira parte e o que prefere deixar?",
+    "acao": "Anote uma descoberta possível e uma pergunta ainda aberta. Não é preciso preparar uma conversa difícil."
+  },
+  "22": {
+    "motivacao": "Você não precisa apresentar uma conquista para merecer consideração.",
+    "reflexao": "Que necessidade gostaria de levar a sério hoje?",
+    "acao": "Escolha uma necessidade cotidiana e escreva um jeito pequeno de reconhecê-la, mesmo sem resolvê-la agora."
+  },
+  "23": {
+    "motivacao": "Suas necessidades continuam importantes quando não encontram escuta.",
+    "reflexao": "O que você já tentou comunicar e o que aconteceu depois?",
+    "acao": "Separe “o que depende de mim” e “o que depende também de outra pessoa”. Escolha se quer guardar isso ou buscar apoio."
+  },
+  "24": {
+    "motivacao": "Você pode reconhecer uma preferência sem precisar justificá-la o tempo todo.",
+    "reflexao": "Qual escolha pequena faria por gosto pessoal?",
+    "acao": "Escreva a escolha e o que aprecia nela. Realizá-la hoje é opcional."
+  },
+  "25": {
+    "motivacao": "Discordar pode ser uma escolha, não uma prova de coragem.",
+    "reflexao": "Há uma preferência que gostaria de reconhecer para si?",
+    "acao": "Escreva “Eu prefiro ___ porque ___”. Compartilhe apenas se quiser e se o contexto for seguro."
+  },
+  "26": {
+    "motivacao": "Você merece ocupar espaço. Sua presença conta.",
+    "reflexao": "Que conhecimento ou experiência sua gostaria de reconhecer?",
+    "acao": "Anote uma coisa que sabe fazer e um exemplo concreto de quando usou esse conhecimento."
+  },
+  "27": {
+    "motivacao": "Você pode considerar o contexto antes de decidir se quer falar.",
+    "reflexao": "O que tornaria uma conversa mais viável ou indicaria que é melhor não iniciá-la?",
+    "acao": "Liste uma condição que ajudaria e uma razão para adiar. Se houver medo, ameaça ou controle, não use o exercício para se forçar a conversar."
+  },
+  "28": {
+    "motivacao": "Reconhecer o que importa para você pode levar tempo.",
+    "reflexao": "Qual anotação gostaria de entender melhor?",
+    "acao": "Escolha uma resposta anterior e acrescente “Isso importa para mim porque…”. Você pode deixá-la incompleta."
+  },
+  "29": {
+    "motivacao": "Seu valor não depende de conseguir se sentir bem todos os dias.",
+    "reflexao": "Que esforço seu costuma passar despercebido para você?",
+    "acao": "Registre um esforço pequeno, sem compará-lo ao de outras pessoas. Não precisa ter dado certo."
+  },
+  "30": {
+    "motivacao": "Você pode falar de si com precisão, sem exagerar nem diminuir.",
+    "reflexao": "Como descreveria algo que fez usando apenas fatos?",
+    "acao": "Escreva uma frase concreta, como “Organizei ___” ou “Aprendi ___”. Evite transformar isso numa nota sobre seu valor."
+  },
+  "31": {
+    "motivacao": "Você pode observar o que aconteceu, inclusive quando nada mudou.",
+    "reflexao": "Algo ficou diferente desde que começou, ou continua parecido?",
+    "acao": "Escreva uma observação. “Não percebi diferença” é uma resposta válida."
+  },
+  "32": {
+    "motivacao": "Você pode participar de uma conversa também fazendo perguntas.",
+    "reflexao": "Sobre que assunto gostaria de aprender mais?",
+    "acao": "Anote uma pergunta honesta e algo que já sabe. Não é preciso fingir certeza para participar."
+  },
+  "33": {
+    "motivacao": "Você é valiosa mesmo quando ninguém vê.",
+    "reflexao": "Que atividade pessoal gostaria de fazer pelo prazer de fazê-la?",
+    "acao": "Escolha algo pequeno, como desenhar ou ouvir música. Decida por si se quer compartilhar essa experiência."
+  },
+  "34": {
+    "motivacao": "Uma necessidade pode ser reconhecida antes de virar um pedido.",
+    "reflexao": "O que gostaria de ter mais presente no seu dia?",
+    "acao": "Escreva a necessidade e um exemplo de como ela apareceria na prática. Pedir algo a alguém é uma etapa opcional."
+  },
+  "35": {
+    "motivacao": "Uma fala pode contribuir de muitos jeitos, inclusive com uma pergunta.",
+    "reflexao": "Lembra de uma conversa que foi útil para você ou outra pessoa?",
+    "acao": "Anote o que ajudou: escuta, informação, tempo ou outra coisa. Se não lembrar, descreva o que gostaria de encontrar."
+  },
+  "36": {
+    "motivacao": "Você pode ter prazer em um assunto sem precisar dominar tudo sobre ele.",
+    "reflexao": "Que tema desperta sua curiosidade?",
+    "acao": "Escreva uma coisa que gosta no tema e uma pergunta que gostaria de explorar."
+  },
+  "37": {
+    "motivacao": "Revisitar uma resposta permite perceber continuidade e dúvidas.",
+    "reflexao": "O que pensa hoje sobre uma anotação do início desta parte?",
+    "acao": "Escreva “ainda penso”, “hoje penso diferente” ou “quero pensar mais”. Acrescente um exemplo se quiser."
+  },
+  "38": {
+    "motivacao": "Você pode se preparar para ser clara sem tentar impressionar.",
+    "reflexao": "Qual ideia gostaria de conseguir expressar de um jeito simples?",
+    "acao": "Resuma a ideia em duas frases. Leia para si e retire o que não representa sua intenção."
+  },
+  "39": {
+    "motivacao": "Uma descoberta pequena não exige virar outra pessoa.",
+    "reflexao": "Algo que leu descreveu bem seu momento?",
+    "acao": "Complete “Hoje reconheço ___” ou “Ainda quero entender ___”. Guarde a frase se fizer sentido."
+  },
+  "40": {
+    "motivacao": "Você pode escolher apoios sem transformar ninguém em avaliador do seu valor.",
+    "reflexao": "Que tipo de apoio costuma ajudar você?",
+    "acao": "Liste uma pessoa, atividade ou lugar que oferece esse apoio. Não precisa entrar em contato hoje."
+  },
+  "41": {
+    "motivacao": "Reconhecer uma qualidade não exige demonstrá-la para alguém.",
+    "reflexao": "Que qualidade aparece em uma ação cotidiana sua?",
+    "acao": "Anote a qualidade e um exemplo específico. Um exemplo pequeno é suficiente."
+  },
+  "42": {
+    "motivacao": "A próxima parte pode ser adaptada ao que faz sentido para você.",
+    "reflexao": "Prefere organizar um pensamento, preparar um pedido ou retomar um interesse?",
+    "acao": "Escolha uma direção provisória. Pode mudar de ideia quando conhecer os próximos exercícios."
+  },
+  "43": {
+    "motivacao": "Você pode preparar uma mensagem sem precisar enviá-la.",
+    "reflexao": "O que gostaria de comunicar e com qual intenção?",
+    "acao": "Escreva três linhas: a situação, o que importa para você e um pedido possível. Enviar é opcional."
+  },
+  "44": {
+    "motivacao": "Preparação não precisa terminar em uma conversa imediata.",
+    "reflexao": "O que precisaria considerar antes de decidir conversar?",
+    "acao": "Anote se quer conversar, com quem e em que condições. “Prefiro não conversar agora” também é uma decisão possível."
+  },
+  "45": {
+    "motivacao": "Uma mensagem simples pode começar pelo que você observou.",
+    "reflexao": "Qual situação gostaria de descrever sem adivinhar intenções?",
+    "acao": "Escreva uma frase sobre o que aconteceu. Troque rótulos como “não se importa” pela observação concreta que originou essa impressão."
+  },
+  "46": {
+    "motivacao": "Uma mensagem pode ser honesta e ainda precisar de cuidado.",
+    "reflexao": "O que gostaria de dizer e o que prefere manter privado?",
+    "acao": "Faça duas colunas. Use apenas a primeira para rascunhar uma mensagem, sem obrigação de enviar."
+  },
+  "47": {
+    "motivacao": "Você pode escolher um assunto do tamanho da sua disposição hoje.",
+    "reflexao": "Qual tema parece possível de organizar agora?",
+    "acao": "Escreva uma frase sobre esse tema. Se preferir, use uma situação fictícia para praticar."
+  },
+  "48": {
+    "motivacao": "Depois de escrever ou conversar, você pode observar sem tirar conclusões rápidas.",
+    "reflexao": "O que aconteceu e como ficou para você?",
+    "acao": "Registre uma observação e uma dúvida. Não precisa ter sentido alívio ou encontrado uma resposta."
+  },
+  "49": {
+    "motivacao": "A vontade de conversar precisa encontrar espaço de ambos os lados.",
+    "reflexao": "Se quiser conversar, como poderia verificar a disponibilidade da outra pessoa?",
+    "acao": "Rascunhe “Quero conversar sobre ___. Você tem tempo agora ou prefere combinar outro momento?”. Você decide se vai usar."
+  },
+  "50": {
+    "motivacao": "Escolher o momento também faz parte de uma conversa.",
+    "reflexao": "Há tempo e condições para o assunto que gostaria de abordar?",
+    "acao": "Anote uma condição favorável e uma que sugere adiar. Não iniciar hoje pode ser a escolha mais adequada para você."
+  },
+  "51": {
+    "motivacao": "Você pode respeitar seus limites ao pensar em um assunto difícil.",
+    "reflexao": "O que precisa antes de escolher o próximo passo?",
+    "acao": "Escolha entre escrever para si, procurar uma pessoa de confiança ou pausar. Não se force a confrontar alguém."
+  },
+  "52": {
+    "motivacao": "Um pedido específico pode ser mais fácil de compreender.",
+    "reflexao": "Que atitude concreta gostaria de pedir, se decidir conversar?",
+    "acao": "Transforme “quero atenção” em um exemplo observável, como “quero terminar de contar uma coisa”. A resposta da outra pessoa não é garantida."
+  },
+  "53": {
+    "motivacao": "Você pode reconhecer um limite antes de comunicá-lo.",
+    "reflexao": "Há algum compromisso que gostaria de aceitar, recusar ou reconsiderar?",
+    "acao": "Escreva uma resposta provisória e o que precisa considerar. Não é necessário dar uma resposta hoje."
+  },
+  "54": {
+    "motivacao": "Você pode diferenciar o que sabe do que está tentando entender.",
+    "reflexao": "Sobre esta situação, o que observou e o que ainda é uma suposição?",
+    "acao": "Faça duas linhas: “Eu observei ___” e “Ainda não sei ___”. Não é preciso preencher a dúvida agora."
+  },
+  "55": {
+    "motivacao": "Uma opinião pode vir acompanhada de dúvida.",
+    "reflexao": "Que ideia gostaria de explorar sem precisar estar certa?",
+    "acao": "Escreva “Minha impressão é ___; uma pergunta que tenho é ___”. Compartilhar fica a seu critério."
+  },
+  "56": {
+    "motivacao": "Você conhece experiências suas que não precisam virar uma apresentação.",
+    "reflexao": "Que experiência gostaria de reconhecer em si?",
+    "acao": "Escreva o que viveu ou aprendeu e uma coisa que ainda deseja aprender sobre o assunto."
+  },
+  "57": {
+    "motivacao": "Você pode distinguir sua preferência de uma concordância automática.",
+    "reflexao": "Em uma situação simples, o que você realmente prefere?",
+    "acao": "Escolha uma cena de baixa importância, como decidir um filme, e escreva sua preferência e uma alternativa aceitável."
+  },
+  "58": {
+    "motivacao": "Praticar pode revelar o que facilita e o que dificulta para você.",
+    "reflexao": "Alguma forma de escrever ou conversar combinou melhor com seu jeito?",
+    "acao": "Anote um formato que gostaria de repetir: texto curto, conversa combinada ou reflexão privada, por exemplo."
+  },
+  "59": {
+    "motivacao": "A resposta de outra pessoa pode trazer informação, sem definir seu valor.",
+    "reflexao": "Se houve uma conversa, o que foi dito e o que ficou sem resposta?",
+    "acao": "Separe fatos de interpretações em duas linhas. Se não houve conversa, use um exemplo fictício ou pule."
+  },
+  "60": {
+    "motivacao": "Você pode decidir o que ainda vale explorar.",
+    "reflexao": "Existe um assunto que deseja retomar ou prefere deixar por enquanto?",
+    "acao": "Anote uma escolha provisória e a condição que faria você reconsiderá-la."
+  },
+  "61": {
+    "motivacao": "Você pode reconhecer uma tentativa sem depender do resultado dela.",
+    "reflexao": "Algo que experimentou merece ser lembrado?",
+    "acao": "Anote o que tentou e o que gostaria de adaptar. Não precisa ter dado certo."
+  },
+  "62": {
+    "motivacao": "Você pode continuar, adaptar ou pausar esta prática.",
+    "reflexao": "O que tem sido útil e o que parece mais uma obrigação?",
+    "acao": "Escolha um exercício para manter e um para deixar. Você não precisa assumir um compromisso permanente."
+  },
+  "63": {
+    "motivacao": "Uma revisão pode reunir o que vale levar adiante.",
+    "reflexao": "Que ideia desta parte gostaria de lembrar?",
+    "acao": "Anote uma ideia e um exemplo de quando poderia ser útil. “Nada por enquanto” também é informação."
+  },
+  "64": {
+    "motivacao": "Você pode escolher uma direção sem afirmar que já mudou.",
+    "reflexao": "O que gostaria de ter mais presente nas próximas semanas?",
+    "acao": "Escreva uma intenção pessoal e uma versão pequena que poderia experimentar."
+  },
+  "65": {
+    "motivacao": "A experiência pode ter partes úteis, neutras e difíceis.",
+    "reflexao": "O que funcionou, o que não funcionou e o que ainda não sabe?",
+    "acao": "Preencha apenas as categorias que fizerem sentido. Não procure ganhos só para completar a lista."
+  },
+  "66": {
+    "motivacao": "Você não precisa de uma nova identidade para fazer uma escolha.",
+    "reflexao": "Como gostaria de descrever seu momento, sem se rotular?",
+    "acao": "Complete “Neste momento estou ___ e gostaria de ___”. A frase pode mudar depois."
+  },
+  "67": {
+    "motivacao": "Uma prática sua não precisa de fiscalização.",
+    "reflexao": "Que lembrete discreto ajudaria, se você quiser continuar?",
+    "acao": "Escolha um sinal simples, como deixar o caderno à vista apenas se for adequado para sua privacidade. Também pode não usar lembrete."
+  },
+  "68": {
+    "motivacao": "Escolher quando falar inclui poder decidir não falar.",
+    "reflexao": "O que você leva em conta ao escolher um momento?",
+    "acao": "Liste dois critérios seus, como segurança e disponibilidade. Não precisa testar uma conversa para validar esses critérios."
+  },
+  "69": {
+    "motivacao": "Uma rotina pode ser pequena e flexível.",
+    "reflexao": "Com que frequência uma pausa para si pareceria possível?",
+    "acao": "Escolha uma ocasião para experimentar, sem promessa diária. Depois avalie se quer repetir."
+  },
+  "70": {
+    "motivacao": "Seu aprendizado pode incluir reconhecer o que não depende de você.",
+    "reflexao": "Que expectativa gostaria de ajustar ao olhar para sua experiência?",
+    "acao": "Escreva uma coisa sob sua escolha e uma que depende de outras pessoas ou circunstâncias."
+  },
+  "71": {
+    "motivacao": "Você pode guardar sua experiência sem precisar inspirar ninguém.",
+    "reflexao": "Há algo que gostaria de compartilhar, ou prefere manter só para si?",
+    "acao": "Escolha o que é privado e o que poderia compartilhar se alguém demonstrar interesse. Nenhuma divulgação é necessária."
+  },
+  "72": {
+    "motivacao": "Uma experiência pessoal não precisa virar uma lição para os outros.",
+    "reflexao": "O que você gostaria de preservar deste momento para si?",
+    "acao": "Anote uma frase ou escolha que deseja lembrar, sem obrigação de ensinar ou aconselhar alguém."
+  },
+  "73": {
+    "motivacao": "Feedback pode ser uma informação, não um veredito sobre você.",
+    "reflexao": "Existe uma pergunta específica que gostaria de fazer a alguém de confiança?",
+    "acao": "Se desejar, rascunhe “Minha mensagem ficou clara?”. Pedir feedback é opcional e não precisa ser sobre ter mudado."
+  },
+  "74": {
+    "motivacao": "Você pode avaliar um comentário sem aceitar tudo como verdade.",
+    "reflexao": "Que parte de um comentário parece útil e que parte não representa sua experiência?",
+    "acao": "Anote uma informação para considerar e algo que prefere deixar. Use um exemplo fictício se quiser."
+  },
+  "75": {
+    "motivacao": "Você pode escolher suas ações sem controlar como todos a enxergam.",
+    "reflexao": "Que atitude combina com algo importante para você?",
+    "acao": "Escreva a atitude e a razão pessoal para escolhê-la, sem incluir a aprovação de outra pessoa como condição."
+  },
+  "76": {
+    "motivacao": "Continuar pode significar repetir, adaptar ou descansar.",
+    "reflexao": "Que opção combina mais com sua disposição hoje?",
+    "acao": "Escolha uma: rever uma anotação, fazer um exercício breve ou pausar. Não é preciso ter uma conversa importante."
+  },
+  "77": {
+    "motivacao": "Você não precisa se apressar para provar que está avançando.",
+    "reflexao": "O que faria o próximo passo ser mais viável para você?",
+    "acao": "Escolha entre escrever, pedir apoio ou pausar. Se houver medo, ameaça ou controle, não use este exercício para se forçar a confrontar alguém."
+  },
+  "78": {
+    "motivacao": "Chegar ao fim desta sequência não exige uma grande conversa.",
+    "reflexao": "Que questão gostaria de levar para depois, se houver alguma?",
+    "acao": "Anote a questão e deixe aberta. Você pode encerrar esta sequência sem resolvê-la."
+  },
+  "79": {
+    "motivacao": "Uma pausa não retira sua possibilidade de retomar.",
+    "reflexao": "O que tornaria fácil voltar a esta prática quando desejar?",
+    "acao": "Escolha um ponto de retorno, como um card favorito ou uma pergunta simples. Não precisa criar uma sequência diária."
+  },
+  "80": {
+    "motivacao": "Um hábito útil precisa caber na sua vida.",
+    "reflexao": "Que momento costuma oferecer uma pequena pausa possível?",
+    "acao": "Escolha uma ocasião para experimentar e uma alternativa caso não aconteça. Avalie depois, sem compensar dias perdidos."
+  },
+  "81": {
+    "motivacao": "Você pode olhar para o passado sem exigir que tivesse feito tudo diferente.",
+    "reflexao": "O que gostaria de dizer a si mesma sobre uma situação antiga?",
+    "acao": "Escreva uma frase de compreensão, considerando o que sabia e podia fazer naquele momento. Não é preciso reviver a situação."
+  },
+  "82": {
+    "motivacao": "Você pode decidir o que quer levar desta sequência.",
+    "reflexao": "Há uma prática que gostaria de manter de forma flexível?",
+    "acao": "Registre uma intenção e quando prefere reavaliá-la. Não precisa fazer uma promessa."
+  },
+  "83": {
+    "motivacao": "O próximo período pode pedir algo diferente de você.",
+    "reflexao": "Quer continuar com este tema, explorar outro ou pausar?",
+    "acao": "Anote sua preferência atual. Ela não obriga uma decisão de compra ou um novo desafio."
+  },
+  "84": {
+    "motivacao": "Sua próxima escolha pode continuar sendo privada.",
+    "reflexao": "O que gostaria de priorizar nas próximas semanas?",
+    "acao": "Escreva uma prioridade e um pequeno sinal de que está dando espaço a ela. Compartilhar é opcional."
+  },
+  "85": {
+    "motivacao": "Você pode reconhecer um momento significativo sem precisar chamá-lo de transformação.",
+    "reflexao": "Houve algo que gostaria de lembrar deste período?",
+    "acao": "Anote um momento, uma dúvida ou uma escolha. Não precisa ter sido uma conversa nem algo positivo."
+  },
+  "86": {
+    "motivacao": "Sua própria leitura desta experiência pode continuar aberta.",
+    "reflexao": "O que parece diferente, parecido ou ainda confuso?",
+    "acao": "Escolha uma dessas palavras e dê um exemplo. Evite procurar confirmação de uma mudança que não percebeu."
+  },
+  "87": {
+    "motivacao": "Chegar a este ponto pode significar apenas que você está lendo este card.",
+    "reflexao": "O que gostaria de registrar para si antes de encerrar a sequência?",
+    "acao": "Escreva uma frase e escolha onde guardá-la, se quiser. Considere sua privacidade antes de deixá-la visível."
+  },
+  "88": {
+    "motivacao": "Seu valor não depende do resultado desta sequência.",
+    "reflexao": "Que próximo passo, se algum, faria sentido para você?",
+    "acao": "Escolha entre retomar um interesse, organizar uma ideia, procurar apoio ou pausar. Acrescente uma opção sua se preferir."
+  },
+  "89": {
+    "motivacao": "Você chegou ao último dia previsto desta sequência.",
+    "reflexao": "Quer revisitar algo, continuar de outro jeito ou encerrar por agora?",
+    "acao": "Anote sua escolha. Os cards que estiverem incluídos no seu acesso podem ser revisitados; não é preciso escolher um mês 2."
+  },
+  "90": {
+    "motivacao": "O que fizer sentido pode acompanhar você; o restante pode ficar aqui.",
+    "reflexao": "Qual ideia gostaria de levar, se houver alguma?",
+    "acao": "Registre essa ideia do jeito que preferir ou encerre sem anotação. Você não precisa gravar nem compartilhar nada."
+  }
+}
