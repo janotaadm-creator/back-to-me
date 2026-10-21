@@ -239,3 +239,17 @@ test('journal encrypts text, isolates owners and permits reading after expiry; w
  assert.equal(notes[0].title,'Título de teste');assert.ok(notes[0].content.includes('fictícia'));
  await request(app).delete('/api/experience/journal/'+note.id).set(auth()).expect(200);
 });
+
+test('checkout retries reuse the open session; changing plan expires it before replacement',async()=>{
+ const original={create:stripe.checkout.sessions.create,retrieve:stripe.checkout.sessions.retrieve,expire:stripe.checkout.sessions.expire};
+ const sessions=new Map();let count=0;
+ stripe.checkout.sessions.create=async input=>{const s={id:'cs_test_retry_'+(++count),url:'https://checkout.stripe.com/test',status:'open'};sessions.set(s.id,s);assert.equal(input.mode,'subscription');return s;};
+ stripe.checkout.sessions.retrieve=async id=>sessions.get(id);
+ stripe.checkout.sessions.expire=async id=>{sessions.get(id).status='expired';return sessions.get(id);};
+ const checkout=tier=>request(app).post('/api/stripe/checkout').set('Authorization',`Bearer ${token}`).send({tier});
+ try {
+  const r=await Promise.all([checkout('Essencial'),checkout('Essencial')]);assert.deepEqual(r.map(x=>x.status),[200,200]);assert.equal(count,1);assert.equal(r[0].body.sessionId,r[1].body.sessionId);
+  await checkout('MeuEspaco').expect(200);assert.equal(count,2);assert.equal(sessions.get('cs_test_retry_1').status,'expired');
+  sessions.get('cs_test_retry_2').status='complete';await checkout('Aprofundar').expect(409);assert.equal(count,2);
+ } finally {Object.assign(stripe.checkout.sessions,original);}
+});

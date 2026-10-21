@@ -18,7 +18,10 @@ Chave restrita existente: Checkout leitura/gravação, Subscriptions leitura/gra
 Respostas do exercício público ficam apenas no DOM. Caderno é opt-in, AES256-GCM na base, vinculado ao usuário; não é E2E. Chave de cifragem derivada de JWT_SECRET: **rotação futura desse segredo exige migração das notas com a chave anterior; não rotacionar sem planejar**. Até500notas/8000caracteres. Ler/exportar/excluir permanece após término do plano. Eventos registram somente nomes permitidos e user_id, nunca texto íntimo; são dados pseudônimos, não anônimos.
 
 ## Evidências antes do deploy
-17 testes com PostgreSQL isolado: legado, assinaturas, duplicação, concorrência, falha/renovação/cancelamento, isolamento/cifragem de notas, acesso expirado, oficinas e áudio. Browser local: experiência sem cadastro → conta → três conclusões → recomendação US19; biblioteca e nota de exemplo salva; áudio213s carregado; desktop/celular390px sem overflow. Não testamos eficácia ou demanda com usuárias.
+18 testes com PostgreSQL isolado: legado, assinaturas, duplicação, concorrência, falha/renovação/cancelamento, isolamento/cifragem de notas, acesso expirado, oficinas e áudio. Browser local: experiência sem cadastro → conta → três conclusões → recomendação US19; biblioteca e nota de exemplo salva; áudio213s carregado; desktop/celular390px sem overflow. Não testamos eficácia ou demanda com usuárias.
 
 ## Operação
 Deploy por SHA exato da branch codex/railway-deploy. Não usar --from-source porque master ainda é antiga. O rollout executa migrations aditivas idempotentes. Dados de teste públicos devem ser fictícios, e a assinatura de QA deve ter renovação cancelada. Ativação live e autorização GitHub/autodeploy seguem decisões separadas.
+
+## Publicação bloqueada nesta sessão
+Railway recusou o deploy com “Deploys have been paused temporarily”. Incidente oficial https://status.railway.com/incident/QH8L8B3E: API/dashboard indisponíveis e builds pausados em todas as regiões (Identified, atualização09:28UTC). Nenhum novo deployment foi criado; site permanece em b204563. Novo fluxo de assinatura ainda NÃO está público. Retomar deploy do HEAD desta branch quando o serviço liberar, depois testar compra/cancelamento sandbox público. Não há publicação enfileirada nem monitor automático novo.
