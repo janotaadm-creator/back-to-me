@@ -1,0 +1,483 @@
+{
+  "exercises": [
+    {
+      "id": "cena",
+      "title": "Uma cena, uma necessidade",
+      "goal": "entender",
+      "intro": "Você pode descrever um momento sem ter que explicar a intenção de outra pessoa. Use o exemplo ou uma situação pequena.",
+      "questions": [
+        "O que aconteceu, em uma frase?",
+        "O que você gostaria que tivesse sido diferente?",
+        "O que faz sentido escolher agora?"
+      ],
+      "example": [
+        "Comecei a contar do meu dia e o assunto mudou para as contas.",
+        "Queria terminar minha história e ter alguns minutos de atenção.",
+        "Vou guardar essa percepção por enquanto."
+      ],
+      "choice": "Guardar, pausar ou preparar um pedido são escolhas possíveis.",
+      "level": 0
+    },
+    {
+      "id": "momento",
+      "title": "Um pequeno momento seu",
+      "goal": "interesses",
+      "intro": "Um interesse não precisa virar uma meta de produtividade. Pode ser algo de que você gosta, mesmo que faça tempo que não faça.",
+      "questions": [
+        "Do que você gosta, sem precisar ser boa nisso?",
+        "Qual versão pequena cabe no seu dia?",
+        "Prefere experimentar agora ou deixar para outro momento?"
+      ],
+      "example": [
+        "Gosto de ouvir música.",
+        "Duas músicas durante uma pausa.",
+        "Vou experimentar se houver espaço hoje."
+      ],
+      "choice": "Se não couber hoje, sua escolha continua tendo valor.",
+      "level": 0
+    },
+    {
+      "id": "revisitar",
+      "title": "O que vale levar adiante",
+      "goal": "entender",
+      "intro": "Revisar é observar. Não é dar uma nota para você nem medir o quanto deveria ter mudado.",
+      "questions": [
+        "Que momento você quer revisitar?",
+        "O exercício ajudou em algo específico? Pode responder não.",
+        "Quer repetir, adaptar, trocar ou pausar?"
+      ],
+      "example": [
+        "Escrevi o que senti falta no jantar.",
+        "Consegui nomear que queria atenção; ainda não quero conversar.",
+        "Vou guardar e escolher outro exercício."
+      ],
+      "choice": "Você pode encerrar aqui ou conhecer novos percursos.",
+      "level": 0
+    },
+    {
+      "id": "separar",
+      "title": "O que vi, o que imaginei",
+      "goal": "entender",
+      "intro": "Uma cena pode provocar interpretações diferentes. Separar o observável da hipótese não apaga o que você sentiu.",
+      "questions": [
+        "O que você viu ou ouviu diretamente?",
+        "Que interpretação apareceu?",
+        "Que necessidade sua fica visível, mesmo sem saber a intenção do outro?"
+      ],
+      "example": [
+        "Minha mensagem ficou sem resposta.",
+        "Pensei que não era importante.",
+        "Gostaria de saber se a pessoa pode conversar."
+      ],
+      "choice": "Você não precisa concluir por que alguém agiu assim.",
+      "level": 2
+    },
+    {
+      "id": "energia",
+      "title": "Uma pausa que cabe",
+      "goal": "interesses",
+      "intro": "Descanso não precisa ser conquistado depois de terminar tudo. Observe o que é possível no seu contexto, sem criar outra obrigação.",
+      "questions": [
+        "O que pede uma pausa hoje?",
+        "Que pequena mudança está ao seu alcance?",
+        "Há algo que você pode deixar para depois?"
+      ],
+      "example": [
+        "Estou cansada de olhar para telas.",
+        "Vou olhar pela janela por alguns minutos.",
+        "Posso adiar uma tarefa não urgente."
+      ],
+      "choice": "Pausar também pode ser apenas deixar este exercício para depois.",
+      "level": 2
+    },
+    {
+      "id": "pedido",
+      "title": "Um pedido específico",
+      "goal": "conversa",
+      "intro": "Preparar um pedido é uma opção, não uma obrigação. Se houver medo, ameaça ou controle, não use este exercício para se pressionar a confrontar alguém.",
+      "questions": [
+        "O que você gostaria de pedir, de forma concreta?",
+        "Que frase combina com seu jeito de falar?",
+        "Quer adaptar, guardar ou conversar quando fizer sentido?"
+      ],
+      "example": [
+        "Alguns minutos de escuta.",
+        "Quero terminar de contar uma coisa. Você tem alguns minutos agora ou prefere outro momento?",
+        "Vou guardar e decidir depois."
+      ],
+      "choice": "A frase não controla como outra pessoa vai responder.",
+      "level": 2
+    },
+    {
+      "id": "limite",
+      "title": "Um limite cotidiano",
+      "goal": "conversa",
+      "intro": "Você pode organizar a sua disponibilidade antes de responder. Um limite descreve o que você pode fazer; não garante que outra pessoa concorde.",
+      "questions": [
+        "O que estão pedindo de você?",
+        "O que você consegue oferecer neste momento?",
+        "Como pode expressar isso sem se comprometer além do que deseja?"
+      ],
+      "example": [
+        "Querem que eu assuma mais uma tarefa hoje.",
+        "Hoje não consigo; posso ajudar amanhã por vinte minutos.",
+        "Hoje não posso assumir isso. Amanhã posso ajudar por vinte minutos."
+      ],
+      "choice": "Adapte ao seu contexto. Não é preciso enviar a frase.",
+      "level": 2
+    },
+    {
+      "id": "apoio",
+      "title": "Uma rede possível",
+      "goal": "entender",
+      "intro": "Apoio pode vir de diferentes relações. Não é necessário que uma única pessoa atenda todas as suas necessidades.",
+      "questions": [
+        "De que tipo de apoio você gostaria?",
+        "Existe alguém de confiança com quem seria confortável falar?",
+        "Qual pedido pequeno faria sentido, se você quiser?"
+      ],
+      "example": [
+        "Gostaria de companhia para caminhar.",
+        "Uma amiga com quem gosto de conversar.",
+        "Você gostaria de caminhar comigo esta semana?"
+      ],
+      "choice": "Não envie convites automaticamente. A escolha é sua.",
+      "level": 2
+    },
+    {
+      "id": "retomar",
+      "title": "Retomar sem recomeçar do zero",
+      "goal": "interesses",
+      "intro": "Dias sem praticar não apagam o que você já percebeu. Escolha um ponto de retorno possível.",
+      "questions": [
+        "O que foi útil em outro momento?",
+        "O que precisa mudar para caber agora?",
+        "Qual é o próximo passo mais simples?"
+      ],
+      "example": [
+        "Ouvir música me fez companhia.",
+        "Hoje só tenho tempo para uma canção.",
+        "Vou escolher uma e parar quando quiser."
+      ],
+      "choice": "Você não tem uma sequência a recuperar nem uma dívida com o aplicativo.",
+      "level": 2
+    },
+    {
+      "id": "preferencia",
+      "title": "Uma preferência pequena",
+      "goal": "interesses",
+      "releaseMonth": 1,
+      "intro": "Escolha algo cotidiano em que a sua preferência costuma passar despercebida.",
+      "questions": [
+        "Entre quais opções você está escolhendo?",
+        "Qual combina mais com você hoje?",
+        "Você pode experimentar essa opção, mesmo por pouco tempo?"
+      ],
+      "example": [
+        "Passar a pausa no celular ou ouvir música.",
+        "Hoje prefiro música.",
+        "Vou ouvir uma faixa antes de decidir o resto."
+      ],
+      "choice": "Você pode adaptar, guardar ou deixar qualquer resposta em aberto.",
+      "level": 2
+    },
+    {
+      "id": "ajuste",
+      "title": "Adaptar sem abandonar",
+      "goal": "interesses",
+      "releaseMonth": 1,
+      "intro": "Uma experiência pode precisar de outro tamanho, lugar ou momento.",
+      "questions": [
+        "O que você tentou e não coube?",
+        "Qual parte ainda interessa?",
+        "Que adaptação quer testar ou prefere pausar?"
+      ],
+      "example": [
+        "Tentei caminhar por meia hora.",
+        "Gosto de sair ao ar livre.",
+        "Posso ficar cinco minutos na varanda."
+      ],
+      "choice": "Você pode adaptar, guardar ou deixar qualquer resposta em aberto.",
+      "level": 2
+    },
+    {
+      "id": "dividir",
+      "title": "O que precisa ser dividido",
+      "goal": "conversa",
+      "releaseMonth": 2,
+      "intro": "Nem toda sobrecarga se resolve com organização pessoal. Nomeie uma responsabilidade concreta.",
+      "questions": [
+        "Qual tarefa está pesando?",
+        "O que seria uma divisão concreta?",
+        "Quer preparar um pedido, procurar apoio ou apenas registrar?"
+      ],
+      "example": [
+        "Tenho organizado todas as compras da casa.",
+        "Outra pessoa poderia assumir a lista e uma compra por semana.",
+        "Quero escrever antes de decidir se converso."
+      ],
+      "choice": "Você pode adaptar, guardar ou deixar qualquer resposta em aberto.",
+      "level": 2
+    },
+    {
+      "id": "resposta",
+      "title": "Depois de um pedido",
+      "goal": "conversa",
+      "releaseMonth": 2,
+      "intro": "A resposta de outra pessoa não mede o valor da sua necessidade. Observe o que de fato aconteceu.",
+      "questions": [
+        "O que você pediu?",
+        "Que resposta ou atitude observou?",
+        "O que está ao seu alcance agora?"
+      ],
+      "example": [
+        "Pedi um horário para conversar.",
+        "A pessoa disse que hoje não consegue.",
+        "Posso propor outro dia ou procurar outra fonte de apoio."
+      ],
+      "choice": "Você pode adaptar, guardar ou deixar qualquer resposta em aberto.",
+      "level": 2
+    },
+    {
+      "id": "reconhecer",
+      "title": "O que você quer preservar",
+      "goal": "entender",
+      "releaseMonth": 3,
+      "intro": "Use uma cena concreta para reconhecer uma condição que lhe fez bem. Não é preciso ter uma conquista.",
+      "questions": [
+        "Em qual momento você se sentiu à vontade?",
+        "Que condição ajudou?",
+        "Há uma parte pequena que gostaria de repetir?"
+      ],
+      "example": [
+        "Li em silêncio depois do almoço.",
+        "Tive alguns minutos sem interrupção.",
+        "Quero reservar outra pausa curta."
+      ],
+      "choice": "Você pode adaptar, guardar ou deixar qualquer resposta em aberto.",
+      "level": 2
+    },
+    {
+      "id": "escolher",
+      "title": "Seu próximo percurso",
+      "goal": "entender",
+      "releaseMonth": 3,
+      "intro": "Continuar pode ser repetir algo útil, mudar de direção ou dar uma pausa.",
+      "questions": [
+        "Que exercício teve alguma utilidade?",
+        "O que não ajudou ou não combina mais com você?",
+        "Como quer usar este espaço no próximo mês?"
+      ],
+      "example": [
+        "Separar o que vi do que imaginei me ajudou.",
+        "Não quero escrever todos os dias.",
+        "Prefiro voltar uma vez por semana e ouvir um áudio."
+      ],
+      "choice": "Você pode adaptar, guardar ou deixar qualquer resposta em aberto.",
+      "level": 2
+    }
+  ],
+  "workshops": [
+    {
+      "id": "oficina-1",
+      "title": "Abrir espaço para uma necessidade",
+      "goal": "entender",
+      "level": 3,
+      "releaseMonth": 0,
+      "chapters": [
+        {
+          "title": "Chegar sem pressa",
+          "minutes": 2,
+          "text": "Escolha um lugar confortável o suficiente para este momento. Você pode usar situações fictícias e não precisa escrever nada íntimo. Nesta oficina, ouvir e fazer pausas conta como participar."
+        },
+        {
+          "title": "Uma cena, uma necessidade",
+          "minutes": 5,
+          "text": "Você pode descrever um momento sem ter que explicar a intenção de outra pessoa. Use o exemplo ou uma situação pequena. Pense nas perguntas a seguir, uma de cada vez. O que aconteceu, em uma frase? O que você gostaria que tivesse sido diferente? O que faz sentido escolher agora? Um exemplo possível: Comecei a contar do meu dia e o assunto mudou para as contas. Queria terminar minha história e ter alguns minutos de atenção. Vou guardar essa percepção por enquanto. Guardar, pausar ou preparar um pedido são escolhas possíveis. Pause a narração se quiser praticar. Não é preciso preencher tudo."
+        },
+        {
+          "title": "O que vi, o que imaginei",
+          "minutes": 5,
+          "text": "Uma cena pode provocar interpretações diferentes. Separar o observável da hipótese não apaga o que você sentiu. Pense nas perguntas a seguir, uma de cada vez. O que você viu ou ouviu diretamente? Que interpretação apareceu? Que necessidade sua fica visível, mesmo sem saber a intenção do outro? Um exemplo possível: Minha mensagem ficou sem resposta. Pensei que não era importante. Gostaria de saber se a pessoa pode conversar. Você não precisa concluir por que alguém agiu assim. Pause a narração se quiser praticar. Não é preciso preencher tudo."
+        },
+        {
+          "title": "Uma rede possível",
+          "minutes": 5,
+          "text": "Apoio pode vir de diferentes relações. Não é necessário que uma única pessoa atenda todas as suas necessidades. Pense nas perguntas a seguir, uma de cada vez. De que tipo de apoio você gostaria? Existe alguém de confiança com quem seria confortável falar? Qual pedido pequeno faria sentido, se você quiser? Um exemplo possível: Gostaria de companhia para caminhar. Uma amiga com quem gosto de conversar. Você gostaria de caminhar comigo esta semana? Não envie convites automaticamente. A escolha é sua. Pause a narração se quiser praticar. Não é preciso preencher tudo."
+        },
+        {
+          "title": "Escolher o que fica",
+          "minutes": 3,
+          "text": "Releia apenas o que quiser. Qual pergunta foi útil? Qual não serviu para você? Escolha uma percepção para guardar, um passo para experimentar ou a possibilidade de encerrar por hoje. Esta oficina não avalia sua relação e não diz como você deve agir."
+        }
+      ]
+    },
+    {
+      "id": "oficina-2",
+      "title": "Retomar um interesse possível",
+      "goal": "interesses",
+      "level": 3,
+      "releaseMonth": 1,
+      "chapters": [
+        {
+          "title": "Chegar sem pressa",
+          "minutes": 2,
+          "text": "Escolha um lugar confortável o suficiente para este momento. Você pode usar situações fictícias e não precisa escrever nada íntimo. Nesta oficina, ouvir e fazer pausas conta como participar."
+        },
+        {
+          "title": "Um pequeno momento seu",
+          "minutes": 5,
+          "text": "Um interesse não precisa virar uma meta de produtividade. Pode ser algo de que você gosta, mesmo que faça tempo que não faça. Pense nas perguntas a seguir, uma de cada vez. Do que você gosta, sem precisar ser boa nisso? Qual versão pequena cabe no seu dia? Prefere experimentar agora ou deixar para outro momento? Um exemplo possível: Gosto de ouvir música. Duas músicas durante uma pausa. Vou experimentar se houver espaço hoje. Se não couber hoje, sua escolha continua tendo valor. Pause a narração se quiser praticar. Não é preciso preencher tudo."
+        },
+        {
+          "title": "Uma pausa que cabe",
+          "minutes": 5,
+          "text": "Descanso não precisa ser conquistado depois de terminar tudo. Observe o que é possível no seu contexto, sem criar outra obrigação. Pense nas perguntas a seguir, uma de cada vez. O que pede uma pausa hoje? Que pequena mudança está ao seu alcance? Há algo que você pode deixar para depois? Um exemplo possível: Estou cansada de olhar para telas. Vou olhar pela janela por alguns minutos. Posso adiar uma tarefa não urgente. Pausar também pode ser apenas deixar este exercício para depois. Pause a narração se quiser praticar. Não é preciso preencher tudo."
+        },
+        {
+          "title": "Retomar sem recomeçar do zero",
+          "minutes": 5,
+          "text": "Dias sem praticar não apagam o que você já percebeu. Escolha um ponto de retorno possível. Pense nas perguntas a seguir, uma de cada vez. O que foi útil em outro momento? O que precisa mudar para caber agora? Qual é o próximo passo mais simples? Um exemplo possível: Ouvir música me fez companhia. Hoje só tenho tempo para uma canção. Vou escolher uma e parar quando quiser. Você não tem uma sequência a recuperar nem uma dívida com o aplicativo. Pause a narração se quiser praticar. Não é preciso preencher tudo."
+        },
+        {
+          "title": "Escolher o que fica",
+          "minutes": 3,
+          "text": "Releia apenas o que quiser. Qual pergunta foi útil? Qual não serviu para você? Escolha uma percepção para guardar, um passo para experimentar ou a possibilidade de encerrar por hoje. Esta oficina não avalia sua relação e não diz como você deve agir."
+        }
+      ]
+    },
+    {
+      "id": "oficina-3",
+      "title": "Preparar uma conversa, mantendo sua escolha",
+      "goal": "conversa",
+      "level": 3,
+      "releaseMonth": 2,
+      "chapters": [
+        {
+          "title": "Chegar sem pressa",
+          "minutes": 2,
+          "text": "Escolha um lugar confortável o suficiente para este momento. Você pode usar situações fictícias e não precisa escrever nada íntimo. Nesta oficina, ouvir e fazer pausas conta como participar."
+        },
+        {
+          "title": "Um pedido específico",
+          "minutes": 5,
+          "text": "Preparar um pedido é uma opção, não uma obrigação. Se houver medo, ameaça ou controle, não use este exercício para se pressionar a confrontar alguém. Pense nas perguntas a seguir, uma de cada vez. O que você gostaria de pedir, de forma concreta? Que frase combina com seu jeito de falar? Quer adaptar, guardar ou conversar quando fizer sentido? Um exemplo possível: Alguns minutos de escuta. Quero terminar de contar uma coisa. Você tem alguns minutos agora ou prefere outro momento? Vou guardar e decidir depois. A frase não controla como outra pessoa vai responder. Pause a narração se quiser praticar. Não é preciso preencher tudo."
+        },
+        {
+          "title": "Um limite cotidiano",
+          "minutes": 5,
+          "text": "Você pode organizar a sua disponibilidade antes de responder. Um limite descreve o que você pode fazer; não garante que outra pessoa concorde. Pense nas perguntas a seguir, uma de cada vez. O que estão pedindo de você? O que você consegue oferecer neste momento? Como pode expressar isso sem se comprometer além do que deseja? Um exemplo possível: Querem que eu assuma mais uma tarefa hoje. Hoje não consigo; posso ajudar amanhã por vinte minutos. Hoje não posso assumir isso. Amanhã posso ajudar por vinte minutos. Adapte ao seu contexto. Não é preciso enviar a frase. Pause a narração se quiser praticar. Não é preciso preencher tudo."
+        },
+        {
+          "title": "O que vale levar adiante",
+          "minutes": 5,
+          "text": "Revisar é observar. Não é dar uma nota para você nem medir o quanto deveria ter mudado. Pense nas perguntas a seguir, uma de cada vez. Que momento você quer revisitar? O exercício ajudou em algo específico? Pode responder não. Quer repetir, adaptar, trocar ou pausar? Um exemplo possível: Escrevi o que senti falta no jantar. Consegui nomear que queria atenção; ainda não quero conversar. Vou guardar e escolher outro exercício. Você pode encerrar aqui ou conhecer novos percursos. Pause a narração se quiser praticar. Não é preciso preencher tudo."
+        },
+        {
+          "title": "Escolher o que fica",
+          "minutes": 3,
+          "text": "Releia apenas o que quiser. Qual pergunta foi útil? Qual não serviu para você? Escolha uma percepção para guardar, um passo para experimentar ou a possibilidade de encerrar por hoje. Esta oficina não avalia sua relação e não diz como você deve agir."
+        }
+      ]
+    }
+  ],
+  "paths": [
+    {
+      "id": "entender",
+      "title": "Entender o que faz falta",
+      "ids": [
+        "cena",
+        "separar",
+        "apoio"
+      ]
+    },
+    {
+      "id": "interesses",
+      "title": "Retomar um interesse",
+      "ids": [
+        "momento",
+        "energia",
+        "retomar"
+      ]
+    },
+    {
+      "id": "conversa",
+      "title": "Preparar algo para dizer",
+      "ids": [
+        "pedido",
+        "limite",
+        "revisitar"
+      ]
+    }
+  ],
+  "monthlyPaths": [
+    {
+      "title": "Dar lugar às suas preferências",
+      "releaseMonth": 1,
+      "ids": [
+        "preferencia",
+        "ajuste"
+      ]
+    },
+    {
+      "title": "Responsabilidades e respostas",
+      "releaseMonth": 2,
+      "ids": [
+        "dividir",
+        "resposta"
+      ]
+    },
+    {
+      "title": "O que vale continuar",
+      "releaseMonth": 3,
+      "ids": [
+        "reconhecer",
+        "escolher"
+      ]
+    }
+  ],
+  "continuity": [
+    {
+      "title": "Repetir o que ajudou",
+      "text": "Escolha um card que foi útil no primeiro percurso. Leia de novo pensando numa situação atual. O que permanece igual? O que você adaptaria? Não precisa repetir a ação anterior."
+    },
+    {
+      "title": "Experimentar outro formato",
+      "text": "Escolha uma reflexão que você costuma escrever. Hoje, leia em silêncio ou pense enquanto faz uma pausa. Qual formato exigiu menos esforço? Você pode voltar ao anterior."
+    },
+    {
+      "title": "Um espaço possível",
+      "text": "Observe um momento concreto da semana. O que consumiu seu tempo? O que gostaria de preservar para você? Escolha uma pequena mudança sob seu controle, ou registre que precisa de apoio."
+    },
+    {
+      "title": "Revisar sem cobrança",
+      "text": "Compare uma expectativa com o que aconteceu. O que ajudou? O que não cabe agora? Escolha entre repetir, adaptar, trocar e pausar. Leve apenas essa escolha para a próxima semana."
+    }
+  ],
+  "conversationTemplates": [
+    {
+      "title": "Pedir tempo para falar",
+      "text": "Queria terminar de contar o que aconteceu comigo. Você tem alguns minutos agora ou prefere combinar outro horário?"
+    },
+    {
+      "title": "Pedir divisão de tarefa",
+      "text": "Tenho assumido esta tarefa e está pesado para mim. Você pode ficar responsável por [tarefa concreta] nesta semana?"
+    },
+    {
+      "title": "Adiar uma conversa",
+      "text": "Agora não consigo conversar com atenção. Prefiro pausar e verificar depois um momento possível."
+    },
+    {
+      "title": "Recusar um convite",
+      "text": "Obrigada por me chamar. Desta vez não vou conseguir participar."
+    },
+    {
+      "title": "Preservar um momento seu",
+      "text": "Quero reservar [tempo possível] para [atividade]. Vou me organizar para esse momento e depois vejo o restante."
+    },
+    {
+      "title": "Buscar outra forma de apoio",
+      "text": "Estou tentando organizar uma situação e gostaria de ser ouvida. Você tem disponibilidade para me escutar, sem precisar resolver?"
+    }
+  ]
+}

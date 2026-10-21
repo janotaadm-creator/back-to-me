@@ -2,6 +2,7 @@ const express = require('express');
 const { pool } = require('../db');
 const { authenticateToken } = require('../middleware/auth');
 
+const { getAccessTier } = require('../access');
 const router = express.Router();
 
 // GET /api/community - feed da comunidade (Pro/Premium only)
@@ -10,8 +11,7 @@ router.get('/', authenticateToken, async (req, res) => {
     const userId = req.user.id;
 
     // Check tier
-    const userResult = await pool.query('SELECT tier FROM users WHERE id = $1', [userId]);
-    const userTier = userResult.rows[0]?.tier;
+    const userTier = await getAccessTier(userId);
 
     if (!['Pro', 'Premium'].includes(userTier)) {
       return res.status(403).json({ error: 'Pro or Premium tier required' });

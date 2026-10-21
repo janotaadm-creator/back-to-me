@@ -1,6 +1,6 @@
 # Back to Me API — Dockerfile for Railway deployment
 
-FROM node:18-alpine
+FROM node:24-alpine
 
 WORKDIR /app
 
@@ -8,17 +8,20 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 
 # Copy source code
 COPY src ./src
+COPY public ./public
+COPY media ./media
+COPY back-to-me-30dias.json ./back-to-me-30dias.json
 
 # Expose port
 EXPOSE 3001
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-  CMD node -e "require('http').get('http://localhost:3001/health', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
+  CMD node -e "require('http').get('http://127.0.0.1:' + (process.env.PORT || 3001) + '/health', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
 
 # Start server
 CMD ["npm", "start"]

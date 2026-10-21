@@ -6,21 +6,32 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "seed": "node src/scripts/seed-cards.js"
+    "seed": "node src/scripts/seed-cards.js",
+    "test": "node --test test/*.test.js"
   },
-  "keywords": ["cards", "auth", "stripe", "postgresql"],
+  "keywords": [
+    "cards",
+    "auth",
+    "stripe",
+    "postgresql"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2",
-    "pg": "^8.10.0",
-    "jsonwebtoken": "^9.0.2",
     "bcryptjs": "^2.4.3",
-    "stripe": "^13.8.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "cors": "^2.8.5"
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.10.0",
+    "stripe": "^23.0.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "embedded-postgres": "^18.4.0-beta.17",
+    "nodemon": "^3.0.1",
+    "supertest": "^7.3.1"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

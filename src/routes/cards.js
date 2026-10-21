@@ -2,47 +2,45 @@ const express = require('express');
 const { pool } = require('../db');
 const { authenticateToken } = require('../middleware/auth');
 
+const { getAccessTier, canAccessCard } = require('../access');
 const router = express.Router();
+const revised = require('../content/revised-cards.json');
+const revise = card => ({...card,...revised[String(card.card_id)]});
 
 // GET /api/cards/today - retorna 3 cards de hoje baseado no tier
 router.get('/today', authenticateToken, async (req, res) => {
   try {
     const userId = req.user.id;
-    const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+    const today = new Date().toISOString().split('T')[0];
+    const { rows: users } = await pool.query('SELECT created_at FROM users WHERE id=$1', [userId]);
+    if (!users[0]) return res.status(401).json({ error: 'User not found' });
+    const elapsedDays = Math.max(0, Math.floor((Date.now() - new Date(users[0].created_at).getTime()) / 86400000));
+    const dayNumber = Math.min(30, elapsedDays + 1);
 
     // Get user tier
-    const userResult = await pool.query('SELECT tier FROM users WHERE id = $1', [userId]);
-    const userTier = userResult.rows[0]?.tier || 'Basico';
+    const userTier = await getAccessTier(userId);
 
     // Get 3 cards for today (any card with matching data)
     const cardsResult = await pool.query(
-      `SELECT id, card_id, motivacao, reflexao, acao, tier 
+      `SELECT id, card_id, dia_do_mes, tema_semana, motivacao, reflexao, acao, tier,
+       EXISTS(SELECT 1 FROM actions_completed ac WHERE ac.user_id=$2 AND ac.card_id=cards_metadata.card_id) AS completed
        FROM cards_metadata 
-       WHERE data = $1 
+       WHERE dia_do_mes = $1 ORDER BY card_do_dia
        LIMIT 3`,
-      [today]
+      [dayNumber, userId]
     );
 
     const cards = cardsResult.rows;
 
     // Filter by tier accessibility
-    const accessibleCards = cards.filter(card => {
-      if (userTier === 'Basico') {
-        return card.tier === 'Básico';
-      }
-      if (userTier === 'Pro') {
-        return ['Básico', 'Pro'].includes(card.tier);
-      }
-      if (userTier === 'Premium') {
-        return true; // Premium vê todos
-      }
-      return false;
-    });
+    const accessibleCards = cards.filter(card => canAccessCard(userTier, card.tier));
 
     res.json({
       date: today,
       tier: userTier,
-      cards: accessibleCards.length > 0 ? accessibleCards : cards.slice(0, 3),
+      dayNumber,
+      programEnded: elapsedDays >= 30,
+      cards: accessibleCards.map(revise),
     });
   } catch (err) {
     console.error('[CARDS] Error fetching today cards:', err);
@@ -57,18 +55,16 @@ router.get('/history', authenticateToken, async (req, res) => {
 
     // Get all cards from this month
     const cardsResult = await pool.query(
-      `SELECT c.id, c.card_id, c.data, c.tema_semana, c.motivacao, c.tier,
-              CASE WHEN ac.id IS NOT NULL THEN true ELSE false END as completed
+      `SELECT c.id, c.card_id, c.data, c.dia_do_mes, c.tema_semana, c.motivacao, c.reflexao, c.acao, c.tier,
+              EXISTS(SELECT 1 FROM actions_completed ac WHERE ac.user_id=$1 AND ac.card_id=c.card_id) AS completed
        FROM cards_metadata c
-       LEFT JOIN actions_completed ac ON c.card_id = ac.card_id AND ac.user_id = $1
-       ORDER BY c.data ASC`,
+       ORDER BY c.dia_do_mes, c.card_do_dia`,
       [userId]
     );
 
-    res.json({
-      total: cardsResult.rows.length,
-      cards: cardsResult.rows,
-    });
+    const userTier = await getAccessTier(userId);
+    const cards = cardsResult.rows.filter(card => canAccessCard(userTier, card.tier));
+    res.json({ total: cards.length, cards: cards.map(revise) });
   } catch (err) {
     console.error('[CARDS] Error fetching history:', err);
     res.status(500).json({ error: 'Internal server error' });
