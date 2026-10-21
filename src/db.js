@@ -41,6 +41,8 @@ async function initDatabase() {
       );
     `);
 
+    await client.query('CREATE UNIQUE INDEX IF NOT EXISTS subscriptions_session_unique ON subscriptions (stripe_session_id)');
+
     // Cards metadata table
     await client.query(`
       CREATE TABLE IF NOT EXISTS cards_metadata (

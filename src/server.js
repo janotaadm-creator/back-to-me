@@ -14,23 +14,30 @@ const stripeRoutes = require('./routes/stripe');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+const frontendOrigin = new URL(frontendUrl).origin;
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:5173'],
+  origin: process.env.NODE_ENV === 'production' ? [frontendOrigin] : [frontendOrigin, 'http://localhost:3000', 'http://localhost:3001', 'http://localhost:5173'],
   credentials: true,
 }));
 
 // Important: stripe webhook must be raw buffer BEFORE body parser
-app.post('/api/stripe/webhook', express.raw({ type: 'application/json' }), stripeRoutes);
+app.post('/api/stripe/webhook', express.raw({ type: 'application/json' }), stripeRoutes.webhookHandler);
 
 // Then apply JSON parser for everything else
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Health check
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+app.get('/health', async (req, res) => {
+  try {
+    await require('./db').pool.query('SELECT 1');
+    res.json({ status: 'ok', timestamp: new Date().toISOString() });
+  } catch {
+    res.status(503).json({ status: 'unavailable' });
+  }
 });
 
 // Routes
@@ -40,31 +47,13 @@ app.use('/api/actions', actionsRoutes);
 app.use('/api/community', communityRoutes);
 app.use('/api/stripe', stripeRoutes);
 
-// Success/cancel pages (basic placeholders)
-app.get('/success', (req, res) => {
-  res.send(`
-    <html>
-      <body style="font-family: Arial; text-align: center; margin-top: 100px;">
-        <h1>✓ Payment Successful!</h1>
-        <p>Your subscription is now active.</p>
-        <p>Session ID: ${req.query.session_id}</p>
-        <a href="http://localhost:3000">Back to app</a>
-      </body>
-    </html>
-  `);
-});
-
-app.get('/cancel', (req, res) => {
-  res.send(`
-    <html>
-      <body style="font-family: Arial; text-align: center; margin-top: 100px;">
-        <h1>Payment Cancelled</h1>
-        <p>Your subscription was not completed.</p>
-        <a href="http://localhost:3000">Back to app</a>
-      </body>
-    </html>
-  `);
-});
+// Payment status is confirmed only by the signed webhook.
+function paymentPage(title, message) {
+  const href = frontendUrl.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  return `<html><body style="font-family:sans-serif;text-align:center;margin-top:100px"><h1>${title}</h1><p>${message}</p><a href="${href}">Back to app</a></body></html>`;
+}
+app.get('/success', (req, res) => res.send(paymentPage('Thank you', 'Your payment is being confirmed. Return to the app to check your access.')));
+app.get('/cancel', (req, res) => res.send(paymentPage('Payment cancelled', 'You can return to the app and try again.')));
 
 // Start server
 async function startServer() {
@@ -75,7 +64,7 @@ async function startServer() {
     console.log('[SERVER] Seeding cards...');
     await seedCards();
 
-    app.listen(PORT, () => {
+    return app.listen(PORT, '0.0.0.0', () => {
       console.log(`
 ╔════════════════════════════════════════════════╗
 ║         Back to Me API Server                  ║
@@ -103,6 +92,8 @@ async function startServer() {
   }
 }
 
-startServer();
-
+if (require.main === module) {
+  startServer();
+}
 module.exports = app;
+module.exports.startServer = startServer;

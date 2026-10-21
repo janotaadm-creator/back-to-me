@@ -13,15 +13,6 @@ async function seedCards() {
     const cards = jsonData.cards;
     console.log(`[SEED] Found ${cards.length} cards to load`);
 
-    // Check if cards already exist
-    const checkResult = await pool.query('SELECT COUNT(*) as count FROM cards_metadata');
-    const existingCount = parseInt(checkResult.rows[0].count);
-
-    if (existingCount > 0) {
-      console.log(`[SEED] Cards already exist (${existingCount}). Skipping seed.`);
-      return;
-    }
-
     // Insert all cards
     for (const card of cards) {
       await pool.query(
