@@ -124,6 +124,8 @@
     note.hidden = true;
     note.setAttribute('role', 'status');
     audio.after(note);
+    const preview = audio.closest('details');
+    if (preview) preview.addEventListener('toggle', () => { if (!preview.open) audio.pause(); });
     audio.addEventListener('play', () => {
       audios.forEach(other => { if (other !== audio) other.pause(); });
       note.hidden = false;
