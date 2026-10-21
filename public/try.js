@@ -1,5 +1,10 @@
 'use strict';
 (()=>{
+ document.querySelectorAll('[data-preview]').forEach(button=>button.addEventListener('click',()=>{
+  document.querySelectorAll('[data-preview]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+  document.querySelectorAll('[data-preview-panel]').forEach(panel=>panel.hidden=panel.dataset.previewPanel!==button.dataset.preview);
+  if(matchMedia('(max-width:800px)').matches)document.getElementById('preview-'+button.dataset.preview).scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});
+ }));
  const box=document.getElementById('experimentar'); if(!box)return;
  let goal='entender';
  const examples={entender:['Comecei a contar do meu dia e o assunto mudou para as contas.','Queria terminar minha história e ter alguns minutos de atenção.','Vou guardar essa percepção por enquanto.'],interesses:['Faz tempo que não ouço música só por prazer.','Queria um momento para algo de que gosto.','Vou escolher duas músicas para uma pausa possível.'],conversa:['Quero terminar de contar uma coisa.','Gostaria de alguns minutos de escuta.','Posso preparar um pedido e decidir depois se quero conversar.']};
