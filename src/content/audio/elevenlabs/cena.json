@@ -1,0 +1,17 @@
+{
+  "provider": "ElevenLabs",
+  "model": "eleven_v4",
+  "voice": "Giselle",
+  "voice_id": "3dnxtlZvmyBKQjUnEuGM",
+  "language": "pt-BR",
+  "flow_id": "qs2gw7QDKO77lQh0QvTS",
+  "generation_id": "KlBuQl6ZbiworG6iZOAi",
+  "source_duration_seconds": 69.28,
+  "purpose": "Amostra da landing e orientação do exercício cena",
+  "selection": "Tomada com maior duração entre quatro, priorizando ritmo; avaliação de preferência pelo usuário pendente.",
+  "generated_on": "2026-10-21",
+  "variations": 4,
+  "estimated_batch_usd": 0.8355528,
+  "processing": "AAC 128k, normalização de volume; sem mudança de pitch/velocidade.",
+  "scope": "Somente cena. Outros oito áudios ainda usam sintetizador anterior."
+}
